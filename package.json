@@ -15,6 +15,7 @@
   "engines": { "node": ">=18" },
   "scripts": {
     "build": "tsc -p .",
+    "prepare": "tsc -p .",
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test --experimental-test-coverage --test-coverage-lines=0.95 --test-coverage-branches=0.90 --test-coverage-functions=0.95 --test-coverage-exclude='test/**' test/*.test.ts"
   },
