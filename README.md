@@ -27,7 +27,7 @@ for (const r of res.organic) {
 ```ts
 new SerpCheap("YOUR_API_KEY", {
   baseUrl: "https://api.serp.cheap", // default
-  timeoutMs: 15000,                  // per-request timeout, default 15s
+  timeoutMs: 5000,                  // per-request timeout, default 15s
   maxRetries: 2,                     // retries on transient errors, default 2
 });
 ```

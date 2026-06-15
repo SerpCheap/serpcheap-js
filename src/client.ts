@@ -12,7 +12,7 @@ import { VERSION } from "./version.js";
 export interface ClientOptions {
   /** Base URL of the API. Default https://api.serp.cheap */
   baseUrl?: string;
-  /** Per-request timeout in ms. Default 15000. */
+  /** Per-request timeout in ms. Default 5000. */
   timeoutMs?: number;
   /** Max automatic retries on transient errors (429/503/timeout). Default 2. */
   maxRetries?: number;
@@ -22,7 +22,7 @@ export interface ClientOptions {
 
 const DEFAULTS = {
   baseUrl: "https://api.serp.cheap",
-  timeoutMs: 15000,
+  timeoutMs: 5000,
   maxRetries: 2,
 };
 
