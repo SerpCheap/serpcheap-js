@@ -77,6 +77,7 @@ export class SerpCheap {
           page: params.page ?? 1,
           ...(params.hl ? { hl: params.hl } : {}),
           ...(params.tbs ? { tbs: params.tbs } : {}),
+          ...(params.scrape ? { scrape: params.scrape } : {}),
         }),
         signal: AbortSignal.timeout(this.timeoutMs),
       });

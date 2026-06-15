@@ -44,6 +44,29 @@ new SerpCheap("YOUR_API_KEY", {
 
 The response includes `organic[]`, `ads?`, `knowledgeGraph?`, `peopleAlsoAsk?`, `relatedSearches?`, and `stats` (`balance`, `cost`, `cached`).
 
+## Scraping page content
+
+Pass `scrape` to fetch and extract the top organic results inline. Each scraped result then carries `content` (markdown) and, when `screenshot: true`, a `screenshot_url`. Failures surface per-result as `scrape_error`.
+
+```ts
+const res = await client.search({
+  q: "best running shoes",
+  scrape: { render_js: true, screenshot: true, top_n: 3 },
+});
+
+for (const r of res.organic) {
+  console.log(r.link, r.content, r.screenshot_url);
+}
+```
+
+| Field | Type | Default | Notes |
+|---|---|---|---|
+| `render_js` | `boolean` | `false` | Render with a headless browser before extracting. |
+| `screenshot` | `boolean` | `false` | Capture a full-page screenshot. Implies a render. |
+| `top_n` | `number` | `5` | How many of the top organic results to scrape. |
+| `wait_for` | `string` | — | CSS selector to wait for (render_js only). |
+| `wait_ms` | `number` | — | Extra settle time after load, in ms (render_js only). |
+
 ## Pagination
 
 ```ts

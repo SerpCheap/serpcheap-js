@@ -3,6 +3,7 @@ export { SerpCheapError, mapApiError, type SerpCheapErrorCode } from "./errors.j
 export { VERSION } from "./version.js";
 export type {
   SearchParams,
+  ScrapeOptions,
   SearchResponse,
   OrganicResult,
   Ad,

@@ -6,6 +6,19 @@ export type Country =
 
 export type Tbs = "qdr:h" | "qdr:d" | "qdr:w";
 
+export interface ScrapeOptions {
+  /** Render with a headless browser before extracting (JS-heavy sites). */
+  render_js?: boolean;
+  /** Capture a full-page screenshot (48h presigned URL). Implies a browser render. */
+  screenshot?: boolean;
+  /** How many of the top organic results to scrape. Default 5. */
+  top_n?: number;
+  /** CSS selector to wait for before extracting (render_js only). */
+  wait_for?: string;
+  /** Extra settle time after load, in ms (render_js only). */
+  wait_ms?: number;
+}
+
 export interface SearchParams {
   /** The search query (required). */
   q: string;
@@ -17,6 +30,8 @@ export interface SearchParams {
   tbs?: Tbs;
   /** 1-indexed page. Default 1. */
   page?: number;
+  /** Opt-in page-content scraping attached to the search. */
+  scrape?: ScrapeOptions;
 }
 
 export interface Sitelink {
@@ -31,6 +46,12 @@ export interface OrganicResult {
   snippet: string;
   date?: string;
   sitelinks?: Sitelink[];
+  /** Scraped page content as markdown (present when `scrape` was requested and succeeded). */
+  content?: string;
+  /** Full-page screenshot, 48h presigned URL (present when `scrape.screenshot` was requested). */
+  screenshot_url?: string;
+  /** Why this page couldn't be scraped (not billed). Mutually exclusive with `content`. */
+  scrape_error?: string;
 }
 
 export interface Ad {
