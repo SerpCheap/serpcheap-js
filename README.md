@@ -66,6 +66,8 @@ for (const r of res.organic) {
 | `top_n` | `number` | `5` | How many of the top organic results to scrape. |
 | `wait_for` | `string` | — | CSS selector to wait for (render_js only). |
 | `wait_ms` | `number` | — | Extra settle time after load, in ms (render_js only). |
+| `screenshot_width` | `number` | `1920` | Screenshot viewport width in px (max 1920). |
+| `screenshot_height` | `number` | `1080` | Screenshot viewport height in px (max 1920). |
 
 ## Pagination
 

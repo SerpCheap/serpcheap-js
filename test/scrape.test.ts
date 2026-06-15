@@ -20,6 +20,12 @@ test("scrape forwarded when provided", async () => {
   assert.deepEqual(bodyOf(calls[0]).scrape, { render_js: true, screenshot: true, top_n: 3 });
 });
 
+test("screenshot dimensions forwarded when provided", async () => {
+  const { client, calls } = clientWith();
+  await client.search({ q: "hi", scrape: { screenshot: true, screenshot_width: 1280, screenshot_height: 720 } });
+  assert.deepEqual(bodyOf(calls[0]).scrape, { screenshot: true, screenshot_width: 1280, screenshot_height: 720 });
+});
+
 test("organic results expose scraped fields", async () => {
   const scraped = {
     search: "hi",

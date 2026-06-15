@@ -17,6 +17,10 @@ export interface ScrapeOptions {
   wait_for?: string;
   /** Extra settle time after load, in ms (render_js only). */
   wait_ms?: number;
+  /** Screenshot viewport width in px (screenshot only). Default 1920, max 1920. */
+  screenshot_width?: number;
+  /** Screenshot viewport height in px (screenshot only). Default 1080, max 1920. */
+  screenshot_height?: number;
 }
 
 export interface SearchParams {
