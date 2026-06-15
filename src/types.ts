@@ -100,3 +100,89 @@ export interface SearchResponse {
   relatedSearches?: RelatedSearch[];
   stats?: SearchStats;
 }
+
+export interface ScrapeParams {
+  /** The page URL to fetch and extract (required). */
+  url: string;
+  /** Render with a headless browser before extracting (JS-heavy sites). */
+  render_js?: boolean;
+  /** Capture a screenshot (48h presigned URL). Implies a browser render. */
+  screenshot?: boolean;
+  /** CSS selector to wait for before extracting (render_js only). */
+  wait_for?: string;
+  /** Extra settle time after load, in ms (render_js only). */
+  wait_ms?: number;
+  /** Screenshot width in px (screenshot only). Default 1920, max 1920. */
+  screenshot_width?: number;
+  /** Screenshot height in px (screenshot only). Default 1080, max 1920. */
+  screenshot_height?: number;
+}
+
+export interface ScrapeStats {
+  /** Credits remaining after this scrape. */
+  balance: number;
+  /** Credits charged. */
+  cost: number;
+}
+
+export interface ScrapeResponse {
+  url: string;
+  status?: number;
+  title?: string;
+  /** Extracted page content as markdown. */
+  content?: string;
+  content_text?: string;
+  /** Full-page screenshot, 48h presigned URL (present when `screenshot` was requested). */
+  screenshot_url?: string;
+  stats?: ScrapeStats;
+}
+
+export interface RankParams {
+  /** The domain or full URL to locate in the results (required). */
+  url: string;
+  /** The keyword to rank for (required). */
+  q: string;
+  /** Country (geolocation). Default "us". */
+  gl?: Country;
+  /** UI language, BCP-47-ish ("en", "pt-BR"). */
+  hl?: string;
+  /** Time filter — past hour/day/week. */
+  tbs?: Tbs;
+  /** How many result pages to scan (1..10). Default 1. */
+  pages?: number;
+  /** domain = any result on the registrable domain; exact = the identical URL. Default "domain". */
+  match_type?: "domain" | "exact";
+}
+
+export interface RankMatch {
+  /** Absolute 1-based rank across scanned pages. */
+  rank: number;
+  page: number;
+  position_on_page: number;
+  link: string;
+  title: string;
+}
+
+export interface RankStats {
+  balance: number;
+  cost: number;
+  pages_cached: number;
+  pages_fresh: number;
+}
+
+export interface RankResponse {
+  url: string;
+  search: string;
+  gl: string;
+  match_type: "domain" | "exact";
+  pages_scanned: number;
+  found: boolean;
+  /** Absolute rank of the best match, or null if not found. */
+  rank: number | null;
+  matches: RankMatch[];
+  /** Every organic result across the scanned pages (absolute position). */
+  organic: OrganicResult[];
+  partial: boolean;
+  pages_failed: number[];
+  stats?: RankStats;
+}

@@ -69,6 +69,64 @@ for (const r of res.organic) {
 | `screenshot_width` | `number` | `1920` | Screenshot viewport width in px (max 1920). |
 | `screenshot_height` | `number` | `1080` | Screenshot viewport height in px (max 1920). |
 
+## Scrape a single page
+
+`scrape()` fetches and extracts one URL — markdown `content`, plain `content_text`, and optionally a `screenshot_url`.
+
+```ts
+const page = await client.scrape({
+  url: "https://example.com/article",
+  render_js: true,
+  screenshot: true,
+});
+
+console.log(page.title, page.content);
+console.log(page.screenshot_url);
+```
+
+| Param | Type | Default | Notes |
+|---|---|---|---|
+| `url` | `string` | — | The page URL to fetch and extract (required). |
+| `render_js` | `boolean` | `false` | Render with a headless browser before extracting. |
+| `screenshot` | `boolean` | `false` | Capture a screenshot. Implies a render. |
+| `wait_for` | `string` | — | CSS selector to wait for (render_js only). |
+| `wait_ms` | `number` | — | Extra settle time after load, in ms (render_js only). |
+| `screenshot_width` | `number` | `1920` | Screenshot width in px (max 1920). |
+| `screenshot_height` | `number` | `1080` | Screenshot height in px (max 1920). |
+
+## Rank tracking
+
+`rank()` scans Google result pages for a keyword and reports where a domain or URL lands.
+
+```ts
+const r = await client.rank({
+  url: "example.com",
+  q: "best running shoes",
+  gl: "us",
+  pages: 3,
+  match_type: "domain",
+});
+
+if (r.found) {
+  console.log(`Ranks #${r.rank}`);
+  for (const m of r.matches) {
+    console.log(`page ${m.page}, position ${m.position_on_page}: ${m.link}`);
+  }
+}
+```
+
+| Param | Type | Default | Notes |
+|---|---|---|---|
+| `url` | `string` | — | The domain or full URL to locate (required). |
+| `q` | `string` | — | The keyword to rank for (required). |
+| `gl` | `Country` | `"us"` | Country/geolocation. |
+| `hl` | `string` | — | UI language (`"en"`, `"pt-BR"`). |
+| `tbs` | `Tbs` | — | Time filter — `qdr:h` / `qdr:d` / `qdr:w`. |
+| `pages` | `number` | `1` | How many result pages to scan (1..10). |
+| `match_type` | `"domain" \| "exact"` | `"domain"` | `domain` = any result on the registrable domain; `exact` = the identical URL. |
+
+The response carries `found`, `rank` (absolute, or `null`), `matches[]`, the full `organic[]` across scanned pages, plus `partial`/`pages_failed` and `stats`.
+
 ## Pagination
 
 ```ts
