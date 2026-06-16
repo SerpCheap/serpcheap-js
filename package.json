@@ -1,6 +1,6 @@
 {
   "name": "@serpcheap/sdk",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Official serp.cheap SERP API client — Google search results as structured JSON.",
   "type": "module",
   "main": "./dist/index.js",
@@ -11,17 +11,32 @@
       "import": "./dist/index.js"
     }
   },
-  "files": ["dist", "README.md"],
-  "engines": { "node": ">=18" },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "tsc -p .",
     "prepare": "tsc -p .",
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test --experimental-test-coverage --test-coverage-lines=0.95 --test-coverage-branches=0.90 --test-coverage-functions=0.95 --test-coverage-exclude='test/**' test/*.test.ts"
   },
-  "keywords": ["serp", "google", "search", "scraping", "serpapi", "api"],
+  "keywords": [
+    "serp",
+    "google",
+    "search",
+    "scraping",
+    "serpapi",
+    "api"
+  ],
   "homepage": "https://serp.cheap",
-  "repository": { "type": "git", "url": "https://github.com/SerpCheap/serpcheap-js.git" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SerpCheap/serpcheap-js.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "tsx": "^4.19.0",
