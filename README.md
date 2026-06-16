@@ -1,5 +1,9 @@
 # @serpcheap/sdk
 
+[![npm](https://img.shields.io/npm/v/@serpcheap/sdk)](https://www.npmjs.com/package/@serpcheap/sdk)
+[![npm downloads](https://img.shields.io/npm/dm/@serpcheap/sdk)](https://www.npmjs.com/package/@serpcheap/sdk)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 Official JavaScript/TypeScript client for the [serp.cheap](https://serp.cheap) Google SERP API. Google search results as structured JSON. Zero dependencies — uses native `fetch`.
 
 ## Install
