@@ -4,7 +4,9 @@
 [![npm downloads](https://img.shields.io/npm/dm/@serpcheap/sdk)](https://www.npmjs.com/package/@serpcheap/sdk)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Official JavaScript/TypeScript client for the [serp.cheap](https://serp.cheap) Google SERP API. Google search results as structured JSON. Zero dependencies — uses native `fetch`.
+Official JavaScript/TypeScript client for the [serp.cheap](https://serp.cheap) **Google Search API** — real-time Google SERP data (organic results, ads, knowledge graph, page scraping, rank tracking) as structured JSON. Zero dependencies — uses native `fetch`.
+
+The **cheapest Google Search API** we know of: $0.0003 per cached search, $0.0006 fresh, no monthly minimum (~10× cheaper than SerpApi).
 
 ## Install
 
