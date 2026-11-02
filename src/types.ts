@@ -2,7 +2,7 @@
  *  contract/fixtures/cases.json so they never drift from the API. */
 
 export type Country =
-  | "br" | "us" | "gb" | "de" | "fr" | "es" | "it" | "mx" | "ca" | "au" | "jp" | "nl";
+  | "br" | "us" | "gb" | "de" | "fr" | "es" | "it" | "mx" | "ca" | "au" | "jp" | "nl" | "sa";
 
 export type Tbs = "qdr:h" | "qdr:d" | "qdr:w";
 
